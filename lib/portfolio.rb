@@ -27,7 +27,7 @@ module Portfolio
     # @@active_sources class variable for later use
     def activate(symbol, chart)
       if active_charts.has_key?(symbol)
-        Portfolio.log.warn "Portfolio chart activation: Chart with idential symbol already initialized" 
+        Portfolio.log.warn "Portfolio chart activation: Chart with idential symbol already initialized"
       end
       active_charts.update({ symbol => chart })
     end
