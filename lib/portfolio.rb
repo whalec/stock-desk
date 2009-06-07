@@ -1,8 +1,10 @@
 require 'rubygems'
+require 'fastercsv'
 require 'open-uri'
 require 'logger'
 $:<< File.join(File.dirname(__FILE__))
-require 'portfolio/chart'
+Dir["#{File.dirname(__FILE__)}/portfolio/*.rb"].each &method(:require)
+Dir["#{File.dirname(__FILE__)}/portfolio/**/*.rb"].each &method(:require)
 module Portfolio
   class << self
     @@active_charts = {}
