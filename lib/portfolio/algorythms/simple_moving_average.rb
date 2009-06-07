@@ -11,6 +11,7 @@ module Portfolio
 
       def simple_moving_average(chart, length, options = {})
         data = options[:data] || :close
+        
       end
     end
   end

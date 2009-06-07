@@ -15,10 +15,10 @@ module Portfolio
 
     # Returns from the attributes hash with dot syntax
     def method_missing(*args)
-      if attributes.has_key? args.first
-        attributes[args.first]
+      if @studies.has_key? args.first
+        @studies[args.first]
       else
-        p self.attributes
+        p @studies
         super
       end
     end
