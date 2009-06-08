@@ -17,6 +17,19 @@ module Portfolio
       def macd(chart, options = {})
         puts "MACD"
         data = options[:data] || :close
+        chart.ticks[options[:slow_length] - 1..chart.ticks.length - 1].each do |tick|
+          tick.studies[:macd_value] = tick.send("ema_#{options[:fast_length]}") - tick.send("ema_#{options[:fast_length]}")
+        end
+        
+        ema_chart = chart.ticks[options[:slow_length]..chart.ticks.length - 1]
+        # TODO Finish this.... We're up to here...
+        chart.ticks[length-1].studies[attribute] = chart.ticks[length-1].send("sma_#{length}".to_sym)
+        chart.ticks[start..ending].each do |tick|
+          price = tick.send(data)
+          prev_ema = chart.ticks[chart.ticks.index(tick) - 1].send(attribute)
+          tick.studies[attribute] = prev_ema + 2.0 / (length + 1.0) * (price - prev_ema)
+        end
+        
         
       end
     end
