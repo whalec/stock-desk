@@ -23,6 +23,19 @@ describe "GLD Symbol" do
   end
   
   it "should have a Simple Moving Average of 28 on the date of the 29/04/2009" do
-    @day.sma_28.to_s.should eql("88.66") # Had to to_s this to get it to match...
+    @day.sma_28.to_s.should eql("88.6585714285714") # Had to to_s this to get it to match...
+  end
+  
+  it "should have an Exponential Moving Average of 12 on the date of the 29/04/2009" do
+    @day.ema_12.to_s.should eql("88.02")
+  end
+  
+  it "should have an Exponential Moving Average of 26 on the date of the 29/04/2009" do
+    @day.ema_26.to_s.should eql("91.42")
+  end
+  
+  it "should have a MACD based of the EMA 12 & 26" do
+    @day.macd[:value].should_not be_nil
+    @day.macd[:average].should_not be_nil
   end
 end

@@ -15,11 +15,13 @@ module Portfolio
         start = length - 1
         ending = chart.ticks.length - 1
         chart.ticks[start..ending].each do |tick|
-          index = chart.ticks.index(tick)
-          ticks = chart.ticks[index - length + 1..index].collect{|d| d.send(data)}
-          total = 0
-          ticks.each{|d| total += d }
-          tick.studies[attribute] = total / length
+          if tick.studies[attribute].nil? # Only do this if you haven't already
+            index = chart.ticks.index(tick)
+            ticks = chart.ticks[index - length + 1..index].collect{|d| d.send(data)}
+            total = 0
+            ticks.each{|d| total += d }
+            tick.studies[attribute] = total / length
+          end
         end
       end
     end

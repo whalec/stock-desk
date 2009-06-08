@@ -29,7 +29,7 @@ module Portfolio
       res = Net::HTTP.start(uri.host, uri.port) do |http|
         http.get("/table.csv?s=#{symbol.to_s.upcase}")
       end
-      csv = FasterCSV.parse(res.body)
+      csv = FCSV.parse(res.body)
       csv[1..csv.length-1].map{|day| Day.new(day)}.reverse # Need the oldest day first
     end
   end
