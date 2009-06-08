@@ -1,0 +1,25 @@
+Portfolio is a stock management and analysis system written in Ruby.
+
+It aims to offer a clean and extensible DSL for the creation of a stock portfolio, allowing you to run it on a daily basis to analyse a large number of stock symbols(available through finance.yahoo.com).
+
+A simple example is as follows:
+
+Portfolio.chart :gld do
+  study :simple_moving_average, 15, 28
+end
+
+This will download the gold(GLD) chart and add two SMA's to it at lengths of 15 & 28. They can then be accessed through
+
+Portfolio[:gld] => <Portfolio::Chart ...
+
+Portfolio[:gld].ticks[100].sma_15 => 45.5 Or whatever the SMA at a length of 15 is
+# TODO: Add a better way to get to ticks then through standard array syntax
+
+# ISSUES
+  If you come across any issues/errors with any of the code especially the algorithms, or if you find a faster(I only care if it's faster) way to do an algorithm, please send a patch to cameron@snepo.com
+
+# TODO
+
+1. Add more alygorythms
+2. Add database support for caching charts in the db
+3. Add analysis DSL
