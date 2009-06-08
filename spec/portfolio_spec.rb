@@ -5,6 +5,8 @@ describe "GLD Symbol" do
   before :all do
     Portfolio.chart :gld do
       study :simple_moving_average, 15, 28
+      study :exponential_moving_average, 12, 26
+      study :macd
     end
     @date = Date.parse("2009-04-29")
     @day = Portfolio[:gld].ticks.select{|day| day.date == @date}.first
@@ -27,11 +29,11 @@ describe "GLD Symbol" do
   end
   
   it "should have an Exponential Moving Average of 12 on the date of the 29/04/2009" do
-    @day.ema_12.to_s.should eql("88.02")
+    @day.ema_12.to_s.should eql("88.0208550175818")
   end
   
   it "should have an Exponential Moving Average of 26 on the date of the 29/04/2009" do
-    @day.ema_26.to_s.should eql("91.42")
+    @day.ema_26.to_s.should eql("88.4452510181791")
   end
   
   it "should have a MACD based of the EMA 12 & 26" do
