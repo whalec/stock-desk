@@ -49,3 +49,21 @@ describe "GLD Symbol" do
     @day.macd_average.abs.to_s.should eql("0.731052236194398")
   end
 end
+
+
+describe "AAPL Symbol heckled" do
+  
+  before :all do
+    logger = mock(Logger)
+    Portfolio.should_receive(:log).and_return(logger)
+    logger.should_receive(:warn)
+    @chart = Portfolio.chart(:aapl).ticks
+    Portfolio.chart :aapl do
+      heckle
+    end
+  end
+  
+  it "should heckle the chart" do
+    Portfolio[:aapl].ticks.should_not eql(@chart)
+  end
+end

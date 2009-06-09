@@ -8,14 +8,19 @@ module Portfolio
       @symbol = symbol
       @ticks  = get_ticks
       
-      activate!
       instance_eval(&block) if block_given?
+      activate! # We activate after the block is complete
     end
     
     def study(study_name, *args)
       study = "Portfolio::Algorythms::#{study_name.to_s.split("_").map{|x| x.capitalize}.join}"
       klass = instance_eval(study)
       klass.send(:new, self, args)
+    end
+    
+    def heckle(factor = 5)
+      puts "Heckling the chart!"
+      @ticks.reverse!
     end
 
     private

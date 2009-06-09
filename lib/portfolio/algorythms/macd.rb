@@ -15,7 +15,6 @@ module Portfolio
       private
       
       def macd(chart, options = {})
-        puts "MACD"
         data = options[:data] || :close
         chart.ticks[options[:slow_length] - 1..chart.ticks.length - 1].each do |tick|
           slow_length = tick.send("ema_#{options[:slow_length]}")
