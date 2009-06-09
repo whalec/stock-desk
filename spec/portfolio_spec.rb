@@ -41,6 +41,7 @@ describe "GLD Symbol" do
     @day.macd_average.should_not be_nil
   end
   
+  # NOTE: You need to use the abs(absolute value) of the macd_value && macd_average
   it "should have a MACD Value on the date of the 29/04/2009" do
     @day.macd_value.abs.to_s.should eql("0.424396000597284")
   end

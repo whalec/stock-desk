@@ -17,9 +17,10 @@ module Portfolio
       klass = instance_eval(study)
       klass.send(:new, self, args)
     end
-    
+
+    # Clearly this is a weak implementation at the moment. :P
     def heckle(factor = 5)
-      puts "Heckling the chart!"
+      puts "Heckling the chart! - It only reverses for now"
       @ticks.reverse!
     end
 

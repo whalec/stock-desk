@@ -19,7 +19,7 @@ module Portfolio
         chart.ticks[options[:slow_length] - 1..chart.ticks.length - 1].each do |tick|
           slow_length = tick.send("ema_#{options[:slow_length]}")
           fast_length = tick.send("ema_#{options[:fast_length]}")
-          tick.studies[:macd_value] = fast_length - slow_length
+          tick.studies[:macd_value] = (fast_length - slow_length)
         end
         
         ema_chart = chart.ticks[options[:slow_length]..chart.ticks.length - 1]
