@@ -37,7 +37,15 @@ describe "GLD Symbol" do
   end
   
   it "should have a MACD based of the EMA 12 & 26" do
-    @day.macd[:value].should_not be_nil
-    @day.macd[:average].should_not be_nil
+    @day.macd_value.should_not be_nil
+    @day.macd_average.should_not be_nil
+  end
+  
+  it "should have a MACD Value on the date of the 29/04/2009" do
+    @day.macd_value.abs.to_s.should eql("0.424396000597284")
+  end
+  
+  it "should have a MACD Average on the date of the 29/04/2009" do
+    @day.macd_average.abs.to_s.should eql("0.731052236194398")
   end
 end
