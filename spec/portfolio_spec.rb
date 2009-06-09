@@ -54,16 +54,19 @@ end
 describe "AAPL Symbol heckled" do
   
   before :all do
+    # We're just mocking the warnings, I want to know they happen, I just 
+    # don't want to see them all the time. 
     logger = mock(Logger)
     Portfolio.should_receive(:log).and_return(logger)
     logger.should_receive(:warn)
-    @chart = Portfolio.chart(:aapl).ticks
+    
+    @un_heckled_chart = Portfolio.chart(:aapl).ticks
     Portfolio.chart :aapl do
       heckle
     end
   end
   
   it "should heckle the chart" do
-    Portfolio[:aapl].ticks.should_not eql(@chart)
+    Portfolio[:aapl].ticks.should_not eql(@un_heckled_chart)
   end
 end
