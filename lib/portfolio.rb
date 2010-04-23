@@ -1,5 +1,5 @@
 require 'rubygems'
-if RUBY_VERSION > "1.9"    
+if RUBY_VERSION > "1.9"
  require "csv"  
  unless defined? FCSV
    class Object  
@@ -20,7 +20,7 @@ module Portfolio
     @@active_charts = {}
     attr_reader :active_charts
     
-    # Access registered smoke source instances
+    # Access registered portfolio instances
     #
     # Usage:
     #
@@ -32,7 +32,7 @@ module Portfolio
       active_charts[symbol]
     end
     
-    # Activates new instances of sources
+    # Activates new registered symbols of a portfolio
     # Source instances are stored within the 
     # @@active_sources class variable for later use
     def activate(symbol, chart)
@@ -42,7 +42,7 @@ module Portfolio
       active_charts.update({ symbol => chart })
     end
     
-    # Returns all activated smoke sources
+    # Returns all activated charts
     def active_charts
       @@active_charts
     end

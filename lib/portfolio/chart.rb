@@ -19,8 +19,9 @@ module Portfolio
     end
 
     # Clearly this is a weak implementation at the moment. :P
+    # You can use this to create fucked up charts from historic data
+    # to test algorythms and trading combos etc.
     def heckle(factor = 5)
-      puts "Heckling the chart! - It only reverses for now"
       @ticks.reverse!
     end
 

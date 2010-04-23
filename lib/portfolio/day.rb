@@ -18,7 +18,7 @@ module Portfolio
       if @studies.has_key? args.first
         @studies[args.first]
       else
-        p @studies
+        Portfolio.log.error "Study #{args.first} not found. Available studies are:\n #{@studies.inspect}"
         super
       end
     end
