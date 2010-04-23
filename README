@@ -20,6 +20,6 @@ Portfolio[:gld].ticks[100].sma_15 => 45.5 Or whatever the SMA at a length of 15 
 
 # TODO
 
-1. Add more alygorythms / optimise existing one
+1. Add more algorithms / optimise existing one
 2. Add database support for caching charts in the db
 3. Add analysis DSL

@@ -9,7 +9,7 @@ module Portfolio
 
       private
 
-      def simple_moving_average(chart, length, options = {})
+      def simple_moving_average(chart, length, options = {})        
         data = options[:data] || :close
         attribute = "sma_#{length}".to_sym
         start = length - 1
