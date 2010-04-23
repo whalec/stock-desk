@@ -18,7 +18,7 @@ module Portfolio
       klass.send(:new, self, args)
     end
 
-    # Clearly this is a weak implementation at the moment. :P
+    # Clearly this is a weak implementation at the moment, need to heckle the array properly.
     # You can use this to create fucked up charts from historic data
     # to test algorythms and trading combos etc.
     def heckle(factor = 5)
